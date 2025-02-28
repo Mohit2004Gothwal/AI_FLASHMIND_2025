@@ -9,6 +9,27 @@ export default function QuizPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const saveQuizToDatabase = async (quizData) => {
+    try {
+      const response = await fetch('/api/quiz', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(quizData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save quiz to database');
+      }
+
+      const savedQuiz = await response.json();
+      console.log('Saved Quiz:', savedQuiz);
+    } catch (error) {
+      console.error('Error saving quiz:', error);
+    }
+  };
+
   const generateQuiz = async () => {
     if (!topic.trim()) return;
     
@@ -44,6 +65,10 @@ export default function QuizPage() {
         }
         
         setQuiz(quizData);
+        
+        // Save the generated quiz to the database
+        await saveQuizToDatabase(quizData);
+
       } catch (parseError) {
         console.error('Parsing error:', parseError);
         throw new Error(`Failed to parse quiz data: ${parseError.message}`);
@@ -52,7 +77,6 @@ export default function QuizPage() {
     } catch (err) {
       console.error('Quiz generation error:', err);
       setError(`Failed to generate quiz: ${err.message}. Please try again.`);
-
     } finally {
       setLoading(false);
     }
@@ -84,6 +108,5 @@ export default function QuizPage() {
         {quiz && console.log('Generated Quiz:', quiz)}
       </div>
     </div>
-
   );
 }

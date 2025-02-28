@@ -30,7 +30,7 @@ export default function RootLayout({children})  {
       forceRedirectUrl="/"
     >
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-gray-100`}> {/* Added background class */}
         <Header />
         {children}
       </body>

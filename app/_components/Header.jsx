@@ -16,16 +16,24 @@ function Header() {
         {isSignedIn ? 
         <div className='flex items-center gap-5'>
             <Link href="/DashBoard">
-              <Button variant="outline">Dashboard</Button>
+<Button variant="outline" className="text-red-500 hover:text-red-700">Dashboard</Button>
+
+
             </Link>
             <Link href="/quiz">
-              <Button variant="outline">Quiz</Button>
+<Button variant="outline" className="text-red-500 hover:text-red-700">Quiz</Button>
+
+
             </Link>
             <Link href="/flashcards">
-              <Button variant="outline">Flashcards</Button>
+<Button variant="outline" className="text-red-500 hover:text-red-700">Flashcards</Button>
+
+
             </Link>
             <Link href="/learn-more">
-              <Button variant="outline">Learn More</Button>
+<Button variant="outline" className="text-red-500 hover:text-red-700">Learn More</Button>
+
+
             </Link>
             <UserButton />
           </div> :

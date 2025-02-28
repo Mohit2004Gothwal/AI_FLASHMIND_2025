@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
+import { Button } from '../../components/ui/button'; // Corrected import path
+import { Textarea } from '../../components/ui/textarea'; // Corrected import path
 import {
   Dialog,
   DialogContent,
@@ -10,8 +10,11 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { generateContent } from "@/app/configs/Aiconfig";
+} from '../../components/ui/dialog'; // Corrected import path
+
+
+import { generateContent } from '../configs/Aiconfig'; // Corrected import path
+
 import Chatbot from "./Chatbot";
 
 function Flashcardform() {

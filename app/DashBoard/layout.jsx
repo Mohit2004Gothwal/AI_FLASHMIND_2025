@@ -5,7 +5,8 @@ import SideNav from './_components/SideNav'
 function DashBoardlayout({children}) {
   return (
     <SignedIn>
-   <div>
+    <div className="bg-gray-100"> {/* Added background class */}
+
       <div className='md:w-64 fixed'>
           <SideNav/>
       </div>

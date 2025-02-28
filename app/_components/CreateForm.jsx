@@ -19,7 +19,10 @@ function CreateForm() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [aiResponse, setAiResponse] = useState('');
-
+  
+  
+   
+  
   const handleSubmit = async () => {
     setIsLoading(true);
     try {

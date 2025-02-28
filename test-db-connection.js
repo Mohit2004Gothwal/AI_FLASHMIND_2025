@@ -8,6 +8,7 @@ if (!process.env.DATABASE_URL) {
   process.exit(1);
 }
 
+
 try {
   // Parse the connection string
   const dbUrl = new URL(process.env.DATABASE_URL);
