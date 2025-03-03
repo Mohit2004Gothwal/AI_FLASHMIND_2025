@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from 'react';
+import { useEffect } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import {
@@ -100,14 +102,17 @@ function CreateForm() {
             <DialogTitle>Create Form</DialogTitle>
             <div>
               <Textarea 
-                className="my-2" 
+                className="my-2 text-white" 
+
                 placeholder="Describe the form you want to create..." 
                 value={formDetails}
                 onChange={(e) => setFormDetails(e.target.value)}
               />
               <div className="flex gap-2 my-3 justify-end">
-                <Button variant="destructive" onClick={handleCancel}>Cancel</Button>
-                <Button onClick={handleSubmit} disabled={isLoading}>
+<Button variant="destructive" className="text-grey-800" onClick={handleCancel}>Cancel</Button> {/* Changed from black to gray */}
+
+<Button className="text-grey-800" onClick={handleSubmit} disabled={isLoading}> {/* Changed from black to gray */}
+
                   {isLoading ? 'Creating...' : 'Create'}
                 </Button>
               </div>

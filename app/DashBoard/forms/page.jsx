@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import { Button } from "@/components/ui/button";
+import { Button } from "'components/ui/button'";
 import { FileText } from "lucide-react";
 import Link from "next/link";
-import Chatbot from "@/app/_components/Chatbot";
+import Chatbot from "'app/_components/Chatbot'";
 
 function FormsPage() {
   const [savedForms, setSavedForms] = useState([]);
@@ -62,9 +62,7 @@ function FormsPage() {
           <div className="bg-white rounded-lg p-6 w-full max-w-4xl">
             <Chatbot response={selectedForm.content} className="w-full" />
             <div className="mt-4 flex justify-end">
-              <Button onClick={() => setSelectedForm(null)}>
-                Close
-              </Button>
+              <Button onClick={() => setSelectedForm(null)}>Close</Button>
             </div>
           </div>
         </div>

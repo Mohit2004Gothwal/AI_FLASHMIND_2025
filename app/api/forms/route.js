@@ -8,6 +8,8 @@ export async function POST(request) {
     console.log('Received form data:', { title, content });
 
     const newForm = await db.insert(forms).values({
+      id: undefined, // Ensure the ID is included in the response
+
       title,
       content
     }).returning();
@@ -18,6 +20,8 @@ export async function POST(request) {
     }
     
     console.log('Successfully saved form:', newForm[0]);
+    return NextResponse.json({ id: newForm[0].id, ...newForm[0] }); // Include the form ID in the response
+
     return NextResponse.json(newForm[0]);
     
   } catch (error) {

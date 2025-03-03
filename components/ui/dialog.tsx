@@ -4,7 +4,7 @@ import * as React from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 import { X } from "lucide-react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils" // Corrected import path
 
 const Dialog = DialogPrimitive.Root
 
@@ -21,7 +21,7 @@ const DialogOverlay = React.forwardRef<
   <DialogPrimitive.Overlay
     ref={ref}
     className={cn(
-      "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "fixed inset-0 z-50 bg-gray-800/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
     {...props}
@@ -88,7 +88,7 @@ const DialogTitle = React.forwardRef<
   <DialogPrimitive.Title
     ref={ref}
     className={cn(
-      "text-lg font-semibold leading-none tracking-tight",
+      "text-lg font-semibold leading-none tracking-tight text-white",
       className
     )}
     {...props}
@@ -102,11 +102,23 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("text-sm text-white", className)}
     {...props}
   />
 ))
 DialogDescription.displayName = DialogPrimitive.Description.displayName
+
+// Adding input styles to ensure text is white
+const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(
+  ({ className, ...props }, ref) => (
+    <input
+      ref={ref}
+      className={cn("flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-base text-white placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm", className)}
+      {...props}
+    />
+  )
+);
+Input.displayName = "Input";
 
 export {
   Dialog,
@@ -119,4 +131,5 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
+  Input, // Exporting the Input component
 }
